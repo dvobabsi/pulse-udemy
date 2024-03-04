@@ -6,6 +6,7 @@ const uglify = require('gulp-uglify-es').default;
 const browserSync = require('browser-sync').create();
 const autoprefixer = require('gulp-autoprefixer');
 const clean = require('gulp-clean');
+const cleanCSS = require('gulp-clean-css');
 const avif = require('gulp-avif');
 const webp = require('gulp-webp');
 const imagemin = require('gulp-imagemin');
@@ -77,14 +78,12 @@ function scripts() {
 function styles() {
     return src('app/scss/style.scss')
         .pipe(sourcemaps.init())
-        .pipe(autoprefixer({overrideBrowserslist: ['last 10 version']}))
-        .pipe(concat('style.min.css'))
-        .pipe(scss({outputStyle: 'compressed'}))
-        .pipe(dest('app/css'))
-
-        .pipe(autoprefixer({overrideBrowserslist: ['last 10 version']}))
-        .pipe(concat('style.css'))
+        .pipe(autoprefixer({ overrideBrowserslist: ['last 10 version'] }))
         .pipe(scss())
+        .pipe(dest('app/css'))
+        .pipe(concat('style.min.css'))
+        .pipe(scss({ outputStyle: 'compressed' }))
+        .pipe(dest('app/css'))
         .pipe(sourcemaps.write(''))
         .pipe(dest('app/css'))
         .pipe(browserSync.stream());
@@ -96,10 +95,10 @@ function watching() {
             baseDir: "app/"
         }
     });
-    watch(['app/scss/style.scss'], styles)
-    watch(['app/image/src'], images)
-    watch(['app/js/main.js'], scripts)
-    watch(['app/components/*', 'app/pages/*'], pages)
+    watch(['app/scss/**/*'], styles);
+    watch(['app/image/src'], images);
+    watch(['app/js/main.js'], scripts);
+    watch(['app/components/*', 'app/pages/*'], pages);
     watch(['app/*.html']).on('change', browserSync.reload);
 }
 
@@ -130,7 +129,6 @@ exports.watching = watching;
 exports.images = images;
 exports.fonts = fonts;
 exports.pages = pages;
-exports.building = building;
 
 exports.build = series(cleanDist, building);
 exports.default = parallel(styles, scripts, pages, watching);

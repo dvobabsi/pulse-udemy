@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +7,48 @@
     <title>Pulse</title>
 </head>
 <body>
-  <div class="promo">
+  <section class="promo">
     <div class="container">
       <header class="header">
-        <a href="#" class="header__logo">Logo</a>
-        <div class="header__official">Официальный представитель</div>
+        <a href="#" class="header__logo">
+          <img class="header__logo-img" src="image/header/logo.png" alt="Logo">
+        </a>
+        <div class="header__official">
+          Официальный представитель
+          <span>Garmin, Polar, Suunto</span>
+        </div>
         <div class="header__contacts">
           <a href="tel:+74999228974" class="header__phone">+7 (499) 922-89-74</a>
           <button class="button header__button">заказать звонок</button>
         </div>
       </header>
-      <div class="promo__wrapper"></div>
+      <div class="promo__wrapper">
+        <h1 class="promo__title">Подбор пульсометра</h1>
+        <h2 class="promo__sub-title">с учётом Вашего уровня подготовки</h2>
+        <ul class="promo__benefits benefits">
+          <li class="benefits__item">
+            <img src="image/sprite.svg#src--header--time" class="benefits__img svg-src--header--time-dims" alt="src--header--time">
+            <p class="benefits__text">Время подбора: 10 минут</p>
+          </li>
+          <li class="benefits__item">
+            <img src="image/sprite.svg#src--header--delivery" class="benefits__img svg-src--header--delivery-dims" alt="src--header--delivery">
+            <p class="benefits__text">Бесплатная доставка</p>
+          </li>
+          <li class="benefits__item">
+            <img src="image/sprite.svg#src--header--messages" class="benefits__img svg-src--header--messages-dims" alt="src--header--messages">
+            <p class="benefits__text">Ответим на все вопросы</p>
+          </li>
+        </ul>
+        <button class="button promo__button">Заказать консультацию</button>
+        <div class="promo__catalog">или <a class="promo__catalog-link" href="#">Перейти в каталог</a></div>
+      </div>
     </div>
-  </div>
+  </section>
   <main>
 </main>
-<footer>Footer</footer>
+<footer>
+  <div class="container">Footer</div>
+</footer>
 <script src="js/main.min.js"></script>
 </body>
 </html>
